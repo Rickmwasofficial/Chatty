@@ -1,2 +1,2 @@
 # Chatty
-A realt time chat app built on flask
+A real time chat app built on flask
