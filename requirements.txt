@@ -1,2 +1,3 @@
 flask
+vercel-wsgi
 flask-socketio
