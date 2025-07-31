@@ -120,6 +120,9 @@ def message(data):
     send(content, to=room)
     rooms[room]['messages'].append(content)
     
+# Vercel expects a handler function for serverless
+def handler(request):
+    return app(request.environ, start_response=lambda *args: None)
     
 if __name__ == "__main__":
     socketio.run(app, debug=True)
