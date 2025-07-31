@@ -5,7 +5,7 @@ import vercel_wsgi
 from string import ascii_uppercase
 
 # Initialize the app
-app = Flask(__name__)
+app = Flask(__name__, static_folder="../static", template_folder="../templates")
 # Set up a secret key
 app.config["SECRET_KEY"] = "I am a serious dev"
 # initialize socket integration
