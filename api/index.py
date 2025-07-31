@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, session, request
 from flask_socketio import join_room, leave_room, send, SocketIO
 import random
+import vercel_wsgi
 from string import ascii_uppercase
 
 # Initialize the app
@@ -119,7 +120,11 @@ def message(data):
     }
     send(content, to=room)
     rooms[room]['messages'].append(content)
-    
+
+
+# Expose the app as a Vercel-compatible handler
+handler = vercel_wsgi.handle_request(app)
+
 # Vercel expects a handler function for serverless
 def handler(request):
     return app(request.environ, start_response=lambda *args: None)
